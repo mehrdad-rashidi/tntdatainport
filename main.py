@@ -18,8 +18,6 @@ for sheet in sheets:
     df = myFile.read_sheet(sheet)
     print(df.head())
     print('loc is 3 : ', df.loc[3][0], type(df.loc[3]))
-
-
 db = MysqlDatabase.MysqlDatabase('localhost', 'root', 'Aa123456@', 'tnt')
 crud = MysqlCRUD.MysqlCRUD(db)
 result = crud.get_column('tb_agent')
