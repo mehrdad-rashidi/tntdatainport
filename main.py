@@ -1,6 +1,7 @@
 from file.Excel import Excel
 from database import MysqlDatabase
 from database import MysqlCRUD
+from file import FileUtils
 
 """
     TNTIran Api for Import Voucher of Goods To Database of Portal
@@ -28,3 +29,15 @@ result1 = crud.get_schema_name('tb_agent')
 # print(type(result))
 data = [124, 2, 'test2', '124@tnt.com']
 crud.save('tb_agent', data)
+
+file_directory = FileUtils.FileUtils('C:/Download')
+file, directory = file_directory.list_file()
+print(file)
+print(directory)
+myFile2 = Excel(file[0])
+sheets2 = myFile2.sheet_name
+print(sheets2)
+path, file_name = file_directory.create_file('Script', 'sql', 'C:/Download')
+del_path = file_directory.delete_file('Script.sql', 'C:/Download')
+print(path, file_name)
+print(f'delete file : {del_path}')
